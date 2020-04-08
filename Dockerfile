@@ -74,7 +74,7 @@ USER merlin
 
 WORKDIR /home/merlin
 
-# replace RUN to COPY if you have am-toolchains on your host machine...
+# change RUN to COPY if you already have am-toolchains on your host machine...
 RUN git clone https://github.com/RMerl/am-toolchains.git /home/merlin/am-toolchains
 # COPY --chown=merlin:merlin am-toolchains /home/merlin/am-toolchains
 USER root
