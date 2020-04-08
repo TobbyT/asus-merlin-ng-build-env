@@ -2,6 +2,10 @@
 FROM ubuntu:bionic
 MAINTAINER Victor <VictorWoodson@outlook.com>
 
+# you need to user 'merlin' to build the firmware
+# docker run command like : 
+# docker run -it --security-opt seccomp:unconfined --user 1000:1000 -v YOUR_SOURCE_CODE:/home/merlin/asuswrt-merlin-root ASUS_MERLIN_IMAGE
+
 # setup the build environment (i386 arch needed for libelf1:i386
 # since host os and ubuntu:bionic are 64-bit)
 RUN dpkg --add-architecture i386
@@ -9,7 +13,7 @@ RUN apt-get update \
 	&& apt-get install -y apt-utils \
 	&& apt-get -y dist-upgrade \
     && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
-        bc \
+                bc \
 		ccache \
 		vim \
 		libncurses5 \
@@ -64,6 +68,7 @@ RUN apt-get update \
 	&& apt-get autoclean -y \
 	&& rm -rf /var/lib/apt/lists/*
 
+# you should have user id 1000 on host machine...
 RUN useradd -u 1000 -m merlin
 USER merlin
 
@@ -89,3 +94,4 @@ ENV PATH="${PATH}:/opt/brcm-arm/bin"
 VOLUME ["/home/merlin/asuswrt-merlin-root"]
 
 CMD ["/bin/bash"]
+
