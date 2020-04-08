@@ -82,8 +82,8 @@ RUN ln -s /home/merlin/am-toolchains/brcm-arm-sdk/hndtools-arm-linux-2.6.36-ucli
 	echo "PATH=\$PATH:/opt/brcm-arm/bin" >> /home/merlin/.profile; \
     echo "export LD_LIBRARY_PATH=/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/lib" >> /home/merlin/.bashrc; \
     echo "export TOOLCHAIN_BASE=/opt/toolchains" >> /home/merlin/.bashrc; \
-    echo "PATH=\$PATH:/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.profile; \
-    echo "PATH=\$PATH:/opt/toolchains/crosstools-aarch65-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.profile; \
+    echo "export PATH=\$PATH:/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.bashrc; \
+    echo "export PATH=\$PATH:/opt/toolchains/crosstools-aarch65-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.bashrc; \
     ln -sf /bin/bash /bin/sh
 
 USER merlin
