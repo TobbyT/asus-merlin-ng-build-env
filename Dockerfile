@@ -1,4 +1,4 @@
-# this builds asus-merlin firmware
+# this builds asus-merlin-ng firmware
 FROM ubuntu:bionic
 MAINTAINER Victor <VictorWoodson@outlook.com>
 
