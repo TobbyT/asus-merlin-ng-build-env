@@ -74,16 +74,15 @@ USER merlin
 
 WORKDIR /home/merlin
 
-# RUN git clone https://github.com/RMerl/am-toolchains.git /home/merlin/am-toolchains
-COPY --chown=merlin:merlin am-toolchains /home/merlin/am-toolchains
+# 
+RUN git clone https://github.com/RMerl/am-toolchains.git /home/merlin/am-toolchains
+# COPY --chown=merlin:merlin am-toolchains /home/merlin/am-toolchains
 USER root
 RUN ln -s /home/merlin/am-toolchains/brcm-arm-sdk/hndtools-arm-linux-2.6.36-uclibc-4.5.3 /opt/brcm-arm; \
 	ln -s /home/merlin/am-toolchains/brcm-arm-hnd /opt/toolchains; \
 	echo "PATH=\$PATH:/opt/brcm-arm/bin" >> /home/merlin/.profile; \
     echo "export LD_LIBRARY_PATH=/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/lib" >> /home/merlin/.bashrc; \
     echo "export TOOLCHAIN_BASE=/opt/toolchains" >> /home/merlin/.bashrc; \
-    echo "export PATH=\$PATH:/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.bashrc; \
-    echo "export PATH=\$PATH:/opt/toolchains/crosstools-aarch65-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin" >> /home/merlin/.bashrc; \
     ln -sf /bin/bash /bin/sh
 
 USER merlin
